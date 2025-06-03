@@ -25,6 +25,34 @@ const quizData = [
             { text: "<movie>", correct: false },
             { text: "<play>", correct: false }
         ]
+    },
+    {
+        question: "Who is the author of \"The Art of War\"?",
+        choices: [
+            { text: "Sun Tzu", correct: false },
+            { text: "Sun Wu", correct: true },
+            { text: "Wu Qi", correct: false }
+        ],
+        explanation: "Sun Wu was a renowned military strategist and statesman during the Spring and Autumn Period, and he is respectfully known as the \"Sage of Warfare\".\n\nWhy NOT Sun Tzu?\nTraditional way of addressing and naming: \"Sun Tzu\" is an honorific title for Sun Wu. In ancient times, the character \"zi\" was used as an honorific title for learned and morally upright men, such as Confucius and Mencius."
+    },
+    {
+        question: "Who was the only female emperor in Chinese history?",
+        choices: [
+            { text: "Wu Zetian", correct: true },
+            { text: "Empress Dowager Cixi", correct: false },
+            { text: "Queen Victoria", correct: false },
+            { text: "Cleopatra", correct: false }
+        ],
+        explanation: "Wu Zetian was the only legitimate empress in Chinese history. She ascended the throne in 690 to establish the Wu Zhou dynasty, breaking the traditional patriarchal ruling pattern. Her reign was marked by relatively clear politics, laying the foundation for the Kaiyuan Prosperity."
+    },
+    {
+        question: "Which of the following correctly represents the order of the birth times of Laozi, Confucius, and Mencius from the earliest to the latest in terms of age?",
+        choices: [
+            { text: "Confucius > Laozi > Mencius", correct: false },
+            { text: "Laozi > Confucius > Mencius", correct: true },
+            { text: "Mencius > Laozi > Confucius", correct: false }
+        ],
+        explanation: "Laozi lived approximately from 571 BC to 471 BC. Confucius was born in 551 BC and passed away in 479 BC. Mencius was born around 372 BC and died in 302 BC. Therefore, according to the order of their births, that is, from the oldest to the youngest in terms of age, the sequence is Laozi > Confucius > Mencius."
     }
 ];
 
@@ -41,18 +69,21 @@ function showQuestion() {
     const questionEl = document.getElementById('question');
     const choicesEl = document.getElementById('choices');
     const progressEl = document.getElementById('progress');
+    const feedbackEl = document.getElementById('feedback');
     
-    // 更新进度条
+    // Update progress bar
     const progress = ((currentQuestion) / quizData.length) * 100;
     progressEl.innerHTML = `<div id="progress-bar" style="width: ${progress}%"></div>`;
     
-    // 显示问题
+    // Show question
     questionEl.textContent = quizData[currentQuestion].question;
     
-    // 清空选项
+    // Clear choices and feedback
     choicesEl.innerHTML = '';
+    feedbackEl.innerHTML = '';
+    feedbackEl.style.display = 'none';
     
-    // 添加选项
+    // Add choices
     quizData[currentQuestion].choices.forEach((choice, index) => {
         const button = document.createElement('button');
         button.textContent = choice.text;
@@ -66,17 +97,20 @@ function checkAnswer(choiceIndex) {
     const feedbackEl = document.getElementById('feedback');
     const buttons = document.querySelectorAll('.choice-btn');
     
-    // 禁用所有按钮
+    // Disable all buttons
     buttons.forEach(button => button.disabled = true);
     
     const correct = quizData[currentQuestion].choices[choiceIndex].correct;
     
-    // 显示反馈
+    // Show feedback and explanation
     feedbackEl.style.display = 'block';
-    feedbackEl.textContent = correct ? '回答正确！' : '回答错误！';
+    feedbackEl.innerHTML = `
+        <div class="feedback-text">${correct ? 'Correct!' : 'Incorrect!'}</div>
+        <div class="explanation">${quizData[currentQuestion].explanation}</div>
+    `;
     feedbackEl.className = correct ? 'correct' : 'incorrect';
     
-    // 高亮正确答案
+    // Highlight correct answer
     buttons.forEach((button, index) => {
         if (quizData[currentQuestion].choices[index].correct) {
             button.classList.add('correct');
@@ -87,7 +121,7 @@ function checkAnswer(choiceIndex) {
     
     if (correct) score++;
     
-    // 延迟后进入下一题
+    // Delay before next question
     setTimeout(() => {
         currentQuestion++;
         if (currentQuestion < quizData.length) {
@@ -95,7 +129,7 @@ function checkAnswer(choiceIndex) {
         } else {
             showResults();
         }
-    }, 1500);
+    }, 5000); // Increased delay to allow time to read explanation
 }
 
 function showResults() {
@@ -114,5 +148,5 @@ function showResults() {
     });
 }
 
-// 开始测验
+// Start quiz
 startQuiz(); 

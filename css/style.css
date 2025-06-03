@@ -41,7 +41,7 @@
 
 #feedback {
     margin: 15px 0;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
     display: none;
 }
@@ -54,6 +54,20 @@
 #feedback.incorrect {
     background: #f8d7da;
     color: #721c24;
+}
+
+.feedback-text {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.explanation {
+    font-size: 0.95em;
+    line-height: 1.5;
+    white-space: pre-line;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,0.1);
 }
 
 #progress {
