@@ -18,6 +18,18 @@
             <h2>Quiz Results</h2>
             <p>Your Score: <span id="score"></span></p>
             <button id="restart">Restart Quiz</button>
+            <section style="margin-top: 40px; padding: 20px; background: #f9f2e9; border-radius: 12px;">
+                <h3>📜 Want More Mind-Twisting History Questions?</h3>
+                <p style="margin-bottom: 12px;">
+                    We're creating premium editions with 50 and 100 questions, featuring deeper stories and rare insights into ancient China.<br>
+                    Leave your email and get the first peek when they launch (and a free sample pack)!
+                </p>
+                <form name="quiz-signup" method="POST" data-netlify="true" action="/thanks.html">
+                    <input type="hidden" name="form-name" value="quiz-signup" />
+                    <input type="email" name="email" placeholder="Enter your email" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                    <button type="submit" style="padding: 8px 16px; margin-left: 8px; background-color: #aa4a44; color: white; border: none; border-radius: 4px;">Notify Me</button>
+                </form>
+            </section>
         </div>
     </div>
     <script src="js/quiz.js"></script>
