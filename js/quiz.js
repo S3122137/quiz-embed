@@ -1,32 +1,5 @@
 const quizData = [
     {
-        question: "以下哪个是JavaScript的基本数据类型？",
-        choices: [
-            { text: "Array", correct: false },
-            { text: "Object", correct: false },
-            { text: "String", correct: true },
-            { text: "Function", correct: false }
-        ]
-    },
-    {
-        question: "CSS中，哪个属性用于改变文本颜色？",
-        choices: [
-            { text: "text-color", correct: false },
-            { text: "font-color", correct: false },
-            { text: "color", correct: true },
-            { text: "text-style", correct: false }
-        ]
-    },
-    {
-        question: "HTML5中，哪个标签用于播放视频？",
-        choices: [
-            { text: "<media>", correct: false },
-            { text: "<video>", correct: true },
-            { text: "<movie>", correct: false },
-            { text: "<play>", correct: false }
-        ]
-    },
-    {
         question: "Who is the author of \"The Art of War\"?",
         choices: [
             { text: "Sun Tzu", correct: false },
